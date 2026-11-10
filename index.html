@@ -1,0 +1,1010 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wings of Water: The Celestial Maiden Narratives and our Endangered Heritage</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Wings of Water: The Celestial Maiden Narratives and our Endangered Heritage — an interactive retelling of the stories of Cambodia, Laos and Thailand under SDG 11.4.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap">
+<style>
+:root{
+  --sky:#e5c876;
+  --ink:#2a1c10; --ink-2:#5a4520; --accent:#4d4d26; --btn-bg:#2a1c10; --btn-ink:#e5c876; --faded:#a08850; --surface:#fffdf0;
+  --rule:rgba(42,28,16,.18);
+  --card-bg:rgba(255,253,240,.52);
+  --dot-color:rgba(42,28,16,.085);
+  --display:"Cormorant Garamond",Garamond,"Times New Roman",serif;
+  --body:"Jost","Futura","Century Gothic",system-ui,sans-serif;
+  color-scheme:light;
+}
+body[data-ink="light"]{
+  --ink:#fff8bd; --ink-2:#d8d0a0; --accent:#e6c976; --btn-bg:#fff8bd; --btn-ink:#0b0a12; --faded:#8a845f;
+  --rule:rgba(255,248,189,.2);
+  --card-bg:rgba(255,248,189,.07);
+  --dot-color:rgba(255,248,189,.075);
+  color-scheme:dark;
+}
+body[data-ink="dark"]{
+  --ink:#1f2c52; --ink-2:#4a5373; --accent:#7a5a12; --btn-bg:#1f2c52; --btn-ink:#fff8bd; --faded:#9aa3bd;
+  --rule:rgba(31,44,82,.18);
+  --card-bg:rgba(255,253,240,.62);
+  --dot-color:rgba(31,44,82,.08);
+  color-scheme:light;
+}
+body[data-ink="brown"]{
+  --ink:#2a1c10; --ink-2:#5a4520; --accent:#4d4d26; --btn-bg:#2a1c10; --btn-ink:#e5c876; --faded:#a08850;
+  --rule:rgba(42,28,16,.2);
+  --card-bg:rgba(255,253,240,.46);
+  --dot-color:rgba(42,28,16,.085);
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--sky);color:var(--ink);font:400 18px/1.6 var(--body);overflow-x:hidden}
+
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.04;margin:0;text-wrap:balance}
+p,figure,blockquote,dl,dd{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+b{font-weight:600}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+#stars{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+/* Buttons and links */
+.btn{display:inline-block;border:0;background:var(--btn-bg);color:var(--btn-ink);padding:12px 20px;font:500 .9375rem/1.2 var(--body);text-decoration:none}
+.btn:hover{text-decoration:underline;text-underline-offset:3px}
+.btn:disabled{background:none;color:var(--faded);text-decoration:none;cursor:default}
+.btn.sm{padding:8px 14px;font-size:.875rem}
+.link{border:0;background:none;padding:0;font:500 1rem/1.4 var(--body);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.link:hover{text-decoration-thickness:2px}
+
+/* Top bar */
+.topbar{position:fixed;z-index:20;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:max(12px,env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) 12px max(20px,env(safe-area-inset-left,0px));
+  background:var(--sky);border-bottom:1px solid var(--rule);pointer-events:none}
+body.at-hero .topbar{background:none;border-bottom-color:transparent}
+.topbar>*{pointer-events:auto}
+.brand{font:600 1.125rem/1 var(--display);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:72vw}
+@media (max-width:359px){.brand{display:none}}
+body.at-hero .brand{visibility:hidden}
+
+/* Sections */
+main{position:relative;z-index:1}
+.sec{position:relative;padding:128px max(20px,env(safe-area-inset-right,0px)) 96px max(20px,env(safe-area-inset-left,0px))}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec.hero{border-top:0;padding:0}
+@media (max-width:760px){.sec{padding:96px 16px 72px}}
+.wrap{max-width:1120px;margin:0 auto}
+.h-chap{font-size:clamp(2.5rem,6vw,5rem);margin-bottom:24px}
+.lede{font-size:clamp(1.125rem,1.6vw,1.375rem);max-width:56ch}
+.prose{max-width:60ch}
+.prose p+p,.prose .lede+p{margin-top:16px}
+.two{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,5vw,72px);align-items:center}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+
+/* Duotone photographs and images with dotted halftone texture overlay */
+.fig .frame,.img-dots{position:relative;display:block;overflow:hidden}
+.fig .frame::after,.water::after,.img-dots::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:2;
+  background-image:radial-gradient(rgba(22,16,10,.26) 1.15px, transparent 1.15px);
+  background-size:5px 5px;
+  mix-blend-mode:multiply;
+}
+.fig img{display:block;width:100%;height:auto}
+.fig .color{position:absolute;inset:0;height:100%;object-fit:cover;opacity:0;transition:opacity 300ms ease-out;z-index:1}
+.fig:hover .color,.fig:focus-within .color,.fig:focus .color{opacity:1}
+.fig figcaption{margin-top:8px;font-size:.8125rem;line-height:1.4;color:var(--ink-2)}
+.fig-tall img{max-height:76vh;object-fit:cover}
+
+/* Cover, from the zine */
+.hero{padding:0;display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.cover-art{display:block;width:100%;height:100%;min-height:100vh;object-fit:cover;object-position:50% 18%}
+.cover-page{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:100vh;background:#e5c876;color:#2a1c10;padding:clamp(32px,5vw,64px) clamp(24px,5vw,72px) clamp(40px,5vh,64px);overflow:hidden}
+.cover-clouds{position:absolute;top:0;right:0;display:block;width:min(68%,480px);height:auto;pointer-events:none;z-index:0}
+.cover-relief{position:absolute;top:clamp(48px,7vh,88px);left:clamp(24px,5vw,72px);width:clamp(84px,8.5vw,120px);height:auto;z-index:1}
+.cover-text{position:relative;z-index:1;margin-top:auto;padding-top:140px}
+.cover-text h1{font-size:clamp(2.4rem,4.2vw,4.1rem);line-height:.96;color:#4d4d26;margin-bottom:24px;max-width:16ch}
+.cover-list{font:500 1.25rem/1.45 var(--display)}
+.cover-lede{margin-top:18px;max-width:42ch;font-size:1rem}
+.cover-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:24px}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .cover-art{height:52vh;min-height:320px;object-position:50% 12%}
+  .cover-page{min-height:0;padding-bottom:56px}
+  .cover-clouds{width:56%}
+  .cover-relief{top:24px;width:72px}
+  .cover-text{padding-top:110px}
+}
+
+/* The capture: clean editorial layout, no images, no boxed containers */
+.taken{display:grid;gap:32px;margin-top:48px;max-width:960px}
+.taken div{display:grid;grid-template-columns:220px 1fr;gap:4px 32px;align-items:baseline;padding-top:24px;border-top:1px solid var(--rule)}
+.taken div:first-child{padding-top:0;border-top:0}
+.taken .who{grid-column:1 / -1;font:400 .875rem/1.4 var(--body);color:var(--ink-2)}
+.taken dt{font:500 2.125rem/1.1 var(--display)}
+.taken dd{font-size:1.0625rem;line-height:1.55}
+@media (max-width:640px){.taken div{grid-template-columns:1fr;gap:6px}}
+
+/* Court quote: clean typography, no pictures or boxes */
+.quote{font:500 clamp(1.75rem,3.4vw,2.75rem)/1.16 var(--display)}
+.quote cite{display:block;margin-top:16px;font:400 .875rem/1.4 var(--body);font-style:normal;color:var(--ink-2)}
+
+/* Omen card: antique royal court astrological divination manuscript */
+.omen{perspective:1200px;width:min(395px,100%);aspect-ratio:3/4.3;border:0;padding:0;background:none;justify-self:center}
+.omen-in{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform 680ms cubic-bezier(.2,.7,.2,1);box-shadow:12px 12px 0 rgba(42,28,16,.28)}
+.omen.flipped .omen-in{transform:rotateY(180deg)}
+.omen-face{
+  position:absolute;
+  inset:0;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+  padding:28px 26px;
+  text-align:center;
+  overflow:hidden;
+}
+.omen-face::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:radial-gradient(rgba(26,20,12,.16) 1px, transparent 1px);
+  background-size:4px 4px;
+}
+.omen-front{
+  background:#1c140d;
+  color:#e6c976;
+  border:1px solid rgba(230,201,118,.45);
+  outline:1px solid rgba(230,201,118,.28);
+  outline-offset:-10px;
+}
+.omen-wheel-wrap{
+  position:relative;
+  width:clamp(168px,20vw,206px);
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  margin-top:4px;
+}
+.omen-wheel{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:50%;
+  box-shadow:0 10px 28px rgba(0,0,0,.55);
+  transition:transform 900ms cubic-bezier(.2,.7,.2,1);
+}
+.omen:hover .omen-wheel,.omen:focus-visible .omen-wheel{
+  transform:rotate(18deg) scale(1.03);
+}
+.omen-kicker{
+  font-size:.75rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#c9b27a;
+}
+.omen-back{
+  background:#f6eed8;
+  color:#2a1c10;
+  transform:rotateY(180deg);
+  border:1px solid rgba(42,28,16,.35);
+  outline:1px solid rgba(42,28,16,.18);
+  outline-offset:-10px;
+  text-align:left;
+  align-items:stretch;
+}
+.omen-back b{
+  text-align:center;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(42,28,16,.2);
+}
+.omen-list{
+  display:grid;
+  gap:14px;
+  margin:auto 0;
+}
+.omen-list div{
+  padding-left:12px;
+  border-left:2px solid #7a5a12;
+  font-size:.92rem;
+  line-height:1.45;
+}
+.omen-list strong{
+  display:block;
+  font-family:var(--display);
+  font-size:1.15rem;
+  font-weight:600;
+  color:#2a1c10;
+}
+.omen-face b{font:600 1.85rem/1.05 var(--display)}
+.omen-face span{font-size:.9375rem;line-height:1.45}
+.omen-front .turn,.omen-back .turn{
+  align-self:center;
+  font-size:.8125rem;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:#c9b27a;
+  border-bottom:1px solid #c9b27a;
+  padding-bottom:2px;
+}
+.omen-back .turn{
+  color:#5a4520;
+  border-bottom-color:#5a4520;
+}
+
+/* The prince follows: unslopped editorial layout with clear typographic hierarchy */
+.journey-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(32px,5vw,72px);
+  align-items:start;
+}
+@media (max-width:860px){.journey-head{grid-template-columns:1fr}}
+.sevens{
+  font:500 clamp(2.5rem,5.5vw,4.5rem)/1 var(--display);
+  color:#e6c976;
+  margin-bottom:16px;
+}
+.dangers{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:32px 24px;
+  margin-top:64px;
+  padding-top:40px;
+  border-top:1px solid var(--rule);
+}
+.danger dt{
+  font:500 1.625rem/1.15 var(--display);
+  color:var(--ink);
+  margin-bottom:8px;
+}
+.danger dd{
+  font-size:.9375rem;
+  line-height:1.5;
+  color:var(--ink-2);
+}
+@media (max-width:960px){.dangers{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:600px){.dangers{grid-template-columns:1fr;gap:24px}}
+
+/* Seven sisters (centered section) */
+#reunion .prose{margin:0 auto;text-align:center}
+#reunion .prose p{margin-left:auto;margin-right:auto}
+.sisters{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:clamp(8px,1.5vw,16px);align-items:end;max-width:760px;margin:40px auto 0}
+.sister{border:0;background:none;padding:8px 0;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:8px}
+.sister img{display:block;width:auto;max-width:100%;height:clamp(96px,12vw,144px);object-fit:contain;transition:transform 200ms ease,opacity 200ms ease}
+.sister:hover:not(.wrong) img{transform:translateY(-4px)}
+.sister.wrong,.sister.dim{opacity:.35}
+.sister.hint img,.sister.right img{filter:drop-shadow(0 0 12px #7a5a12)}
+.game-bar{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:center;margin:24px auto 0;max-width:760px;text-align:center}
+.game-bar div{display:flex;gap:8px}
+.endings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:40px auto 0;max-width:860px;text-align:center}
+.endings div{display:grid;gap:4px;align-content:start}
+.endings .who{font-size:.875rem;color:var(--ink-2)}
+.endings b{display:block;font:600 1.5rem/1.15 var(--display);margin-bottom:4px}
+@media (max-width:680px){.endings{grid-template-columns:1fr;gap:20px}}
+
+/* Three tellings: symmetrical, clean editorial layout */
+.tellings-header{
+  text-align:center;
+  max-width:640px;
+  margin:0 auto 32px;
+}
+.tellings-header .lede{margin:0 auto}
+.tabs{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px 40px;
+  margin:0 auto 48px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--rule);
+  max-width:640px;
+}
+.tabs button,.switch button{
+  border:0;
+  border-bottom:2px solid transparent;
+  background:none;
+  padding:4px 0;
+  color:var(--ink-2);
+  font-size:1.125rem;
+  font-weight:500;
+}
+.tabs button:hover,.switch button:hover{color:var(--ink)}
+.tabs button[aria-selected="true"],.switch button[aria-pressed="true"]{
+  color:var(--ink);
+  border-bottom-color:var(--ink);
+}
+.lens{
+  display:grid;
+  grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+  gap:clamp(32px,4.5vw,56px);
+  align-items:start;
+}
+@media (max-width:900px){.lens{grid-template-columns:1fr}}
+.lens-fig .frame{aspect-ratio:4/4.5;width:100%}
+.lens-fig .frame img{width:100%;height:100%;object-fit:cover}
+.lens-top{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  margin-bottom:24px;
+}
+.lens-title{font-size:clamp(2rem,4vw,3rem)}
+.lens-sub{font:500 1.25rem/1.3 var(--display);color:var(--ink-2);margin-top:4px}
+.beats{display:grid;gap:12px}
+.beat{display:grid;grid-template-columns:152px 1fr;gap:16px;padding-top:12px;border-top:1px solid var(--rule)}
+.beat:first-child{padding-top:0;border-top:0}
+.beat dt{font-size:.875rem;color:var(--ink-2);padding-top:2px}
+@media (max-width:520px){.beat{grid-template-columns:1fr;gap:2px}}
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:24px;padding-top:20px;border-top:1px solid var(--rule)}
+@media (max-width:600px){.notes{grid-template-columns:1fr}}
+
+/* Shared threads, laid out like the zine spread */
+.threads-map{display:grid;grid-template-columns:1fr 1.3fr 1fr;grid-template-areas:"pot birds crowns" "kin title lotus" "kin drums lotus";gap:48px;align-items:center}
+.threads-title{grid-area:title;text-align:center}
+.threads-title h2{font-size:clamp(3rem,7vw,6rem);margin-bottom:16px}
+.threads-title p{max-width:32ch;margin:0 auto}
+.thread{display:grid;justify-items:center;gap:8px;text-align:center}
+.thread img{display:block;width:auto;max-width:100%;height:clamp(120px,13vw,168px);margin-bottom:8px}
+.thread h3{font-size:1.5rem}
+.thread p{font-size:.9375rem;max-width:30ch}
+.thread .today{font-size:.875rem;color:var(--ink-2)}
+@media (max-width:860px){.threads-map{grid-template-columns:1fr 1fr;grid-template-areas:"title title" "pot birds" "crowns kin" "drums lotus";gap:48px 16px}}
+
+/* Wansolwara */
+.water{position:relative;margin-top:40px;overflow:hidden;cursor:crosshair;touch-action:manipulation}
+.water img{display:block;width:100%;height:clamp(180px,24vw,320px);object-fit:cover}
+.ripple{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border:1.5px solid #fff;border-radius:50%;animation:ripple 1.6s cubic-bezier(.2,.7,.2,1) forwards;pointer-events:none}
+@keyframes ripple{to{transform:scale(18);opacity:0}}
+.pull{font:500 clamp(1.75rem,3.4vw,2.75rem)/1.2 var(--display);max-width:none;text-align:left;margin:56px 0}
+.fests{display:grid;gap:56px}
+.fest{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:32px;align-items:center}
+.fest img{display:block;width:100%;height:auto}
+.fest h3{font-size:2rem}
+.fest .where{font-size:.875rem;color:var(--ink-2);margin:4px 0 12px}
+@media (max-width:760px){.fest{grid-template-columns:1fr;gap:16px}}
+
+/* Why it matters */
+.sdg-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+.sdg-badge{width:120px;aspect-ratio:1;background:#fd9d24;color:#fff;display:grid;align-content:start;gap:4px;padding:12px;font:600 .75rem/1.15 var(--body)}
+.sdg-badge b{font-size:2.625rem;line-height:.9}
+.target{font:500 clamp(1.5rem,2.8vw,2.25rem)/1.2 var(--display);max-width:34ch}
+@media (max-width:520px){.sdg-head{grid-template-columns:1fr}}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 24px;margin:64px 0}
+.stat b{display:block;font:500 clamp(2.75rem,6vw,4.5rem)/.9 var(--display);color:var(--accent);margin-bottom:8px}
+.stat span{font-size:.9375rem;line-height:1.45;color:var(--ink-2)}
+@media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.switch{display:flex;gap:28px;margin-bottom:24px}
+.tw{display:grid;gap:16px;max-width:56ch}
+.sdg-note{margin-top:32px;max-width:56ch;color:var(--ink-2)}
+
+/* Quiz (centered) */
+#quiz-sec .wrap{text-align:center}
+#quiz-sec .lede{margin:0 auto}
+.quiz{max-width:720px;margin:40px auto 0;text-align:left}
+.q-card{background:var(--surface);padding:32px;display:grid;gap:20px}
+.q-meta{display:flex;justify-content:space-between;font-size:.875rem;color:var(--ink-2)}
+.q-bar{height:4px;background:#e4e8cf}
+.q-bar i{display:block;height:100%;background:var(--ink)}
+.q-text{font:500 clamp(1.625rem,3vw,2.25rem)/1.16 var(--display)}
+.q-opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.q-opts button{border:0;background:var(--btn-bg);color:var(--btn-ink);padding:14px 12px;font-weight:500}
+.q-opts button:hover:not(:disabled){text-decoration:underline}
+.q-opts button:disabled{background:#e4e8cf;color:#4a5373;cursor:default}
+.q-opts button.ok{background:#3e7a5a;color:#fff}
+.q-opts button.no{background:#a23a30;color:#fff}
+.q-why{min-height:1.6em}
+.q-actions{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center}
+@media (max-width:480px){.q-opts{grid-template-columns:1fr}}
+
+/* Zine reader */
+.reader{margin-top:40px}
+.reader-frame{overflow:hidden;background:#fffbdd;box-shadow:0 16px 40px rgba(31,44,82,.16);touch-action:pan-y}
+.reader-frame img{display:block;width:100%;height:auto}
+.reader figcaption{margin-top:20px;font:500 1.5rem/1.2 var(--display)}
+.reader-bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-top:16px}
+.reader-count{min-width:112px;text-align:center;font-size:.875rem;color:var(--ink-2);font-variant-numeric:tabular-nums}
+@media (max-width:760px){
+  .reader-frame{aspect-ratio:800/1131}
+  .reader-frame img{width:200%;max-width:none;height:100%;object-fit:cover}
+  .reader.right .reader-frame img{transform:translateX(-50%)}
+}
+
+/* Coda */
+.acts{display:grid;gap:28px;margin-top:40px;max-width:720px}
+.acts li{display:grid;gap:4px}
+.acts a,.acts button{justify-self:start;border:0;background:none;padding:0;font:500 1.875rem/1.15 var(--display);text-align:left;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.acts a:hover,.acts button:hover{text-decoration-thickness:2px}
+.acts span{color:var(--ink-2)}
+.credits{margin-top:96px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;font-size:.875rem;line-height:1.6;color:var(--ink-2)}
+.credits h3{font:500 1rem/1.4 var(--body);color:var(--ink);margin-bottom:8px}
+@media (max-width:820px){.credits{grid-template-columns:1fr}}
+
+/* Chapter list and toast */
+dialog.index{border:0;padding:0;width:min(480px,94vw);background:#0b0a12;color:#fff8bd;box-shadow:0 24px 64px rgba(0,0,0,.5)}
+dialog.index::backdrop{background:rgba(8,7,12,.6)}
+.index-in{padding:32px;display:grid;gap:16px}
+.index-in ol{display:grid;gap:4px}
+.index-in a{display:block;padding:4px 0;text-decoration:none;font:500 1.5rem/1.25 var(--display)}
+.index-in a:hover{text-decoration:underline;text-underline-offset:4px}
+.index-close{justify-self:start;border:0;background:#fff8bd;color:#0b0a12;padding:10px 16px;font-size:.9375rem}
+.toast{position:fixed;z-index:40;left:50%;bottom:calc(80px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:none;max-width:90vw;background:#fff8bd;color:#1f2c52;padding:12px 16px;font-size:.9375rem;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.toast.on{display:block}
+</style>
+
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<header class="topbar">
+  <a class="brand" href="#top">Wings of Water: The Celestial Maiden Narratives and our Endangered Heritage</a>
+  <button class="btn sm" id="open-index" aria-haspopup="dialog">Chapters</button>
+</header>
+
+<main id="top">
+
+<section class="sec hero" data-sky="#e5c876" data-ink="brown" data-name="Cover" id="prologue">
+  <img class="cover-art" src="img/zine/mural.jpg" alt="A celestial maiden dancing, from a temple mural, printed in olive on the cover of our zine" width="1000" height="1415">
+  <div class="cover-page">
+    <img class="cover-clouds" src="img/zine/clouds.jpg" alt="" width="716" height="800">
+    <img class="cover-relief" src="img/zine/relief.jpg" alt="" width="300" height="285">
+    <div class="cover-text">
+      <h1>Wings of Water: The Celestial Maiden Narratives and our Endangered Heritage</h1>
+      <ul class="cover-list">
+        <li>Cambodia: Preah Sothun and Neang Monorea</li>
+        <li>Laos: Sithon Manora</li>
+        <li>Thailand: The Tale of Phra Suthon and Manorah</li>
+      </ul>
+      <p class="cover-lede">A celestial maiden is caught on Earth, nearly sacrificed, and dances her way home. Each country tells it differently.</p>
+      <div class="cover-actions"><a class="btn" href="#descent">Start the story</a><a class="link" href="#zine">Read the zine</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-sky="#1e2547" data-ink="light" data-name="The descent" id="descent">
+  <div class="wrap two">
+    <div class="prose">
+      <h2 class="h-chap">Seven sisters fly down</h2>
+      <p class="lede">On Mount Kailasa live seven celestial sisters. They are kinnari: half woman, half bird.</p>
+      <p>They fly down to bathe in a forest pond. The youngest is the most beautiful. Her name changes with the teller: Monorea, Manora, Manorah.</p>
+      <p><b>Cambodia:</b> their father lets them go if they promise to come home when the gongs ring. This telling starts from the sisters' side.</p>
+    </div>
+    <figure class="fig fig-tall" tabindex="0">
+      <span class="frame"><img src="img/devatas-duo.jpg" alt="Three carved celestial maidens on a wall at Angkor Wat" loading="lazy" width="803" height="1200"><img class="color" src="img/devatas.jpg" alt="" loading="lazy"></span>
+      <figcaption>Devatas, Angkor Wat · Kent Davis, CC BY-SA 4.0</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" data-sky="#4d4d26" data-ink="light" data-name="The capture" id="capture">
+  <div class="wrap">
+    <div class="prose">
+      <h2 class="h-chap">Something is taken</h2>
+      <p class="lede">A hunter watches from the trees. When it is time to leave, six sisters rise into the sky. The youngest cannot.</p>
+      <p>What is taken from her is the first clue to which telling you are hearing.</p>
+    </div>
+    <dl class="taken">
+      <div><span class="who">Cambodia</span><dt>A scarf</dt><dd>Her magic scarf vanishes. She cries until she faints, and Prince Sothun offers to help.</dd></div>
+      <div><span class="who">Laos</span><dt>A cord</dt><dd>Two naga reward the hunter with a cord for killing a giant. He binds Manora with it.</dd></div>
+      <div><span class="who">Thailand</span><dt>Her wings</dt><dd>The hunter Boontrik hides the youngest kinnari's wings beside the great lake.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" data-sky="#fff8bd" data-ink="dark" data-name="The court" id="court">
+  <div class="wrap two">
+    <div class="prose">
+      <h2 class="h-chap">A gift for a prince</h2>
+      <p class="lede">The hunter sees she is too high-born for him, so he takes her to the palace.</p>
+      <p>In Thailand he is paid with rank and jewels. In Laos she is traded for treasure. In Cambodia, Prince Sothun was watching at the pond himself. Each time, the prince falls in love and they marry.</p>
+    </div>
+    <blockquote class="quote">"The more the hunter looked at Manorah, the more he realized he could not possess such a great creature"<cite>The Tale of Phra Suthon, Thailand</cite></blockquote>
+  </div>
+</section>
+
+<section class="sec" data-sky="#e6c976" data-ink="brown" data-name="The omen" id="omen-sec">
+  <div class="wrap two">
+    <div class="prose">
+      <h2 class="h-chap">A lie about a dream</h2>
+      <p class="lede">War calls the prince away. While he is gone, a man who reads the future says she must die.</p>
+      <p>He calls her a bad omen. He is lying. Turn the card to see who he is in each telling.</p>
+      <p><b>Cambodia:</b> the king and queen choose exile instead of death.</p>
+      <p><b>Thailand:</b> the king and queen disagree, but the astrologer is too powerful to ignore.</p>
+    </div>
+    <button class="omen" id="omen" aria-pressed="false" aria-label="Turn the omen card">
+      <span class="omen-in">
+        <span class="omen-face omen-front">
+          <span class="omen-kicker">Royal Court Horoscope</span>
+          <span class="omen-wheel-wrap">
+            <img class="omen-wheel" src="img/omen-wheel.webp" alt="Antique Southeast Asian astrological eclipse divination wheel" width="640" height="640" loading="lazy">
+          </span>
+          <b>The reading</b>
+          <span>"She is not a real human being. She will bring disaster on the palace and on the prince."</span>
+          <span class="turn">Turn the card</span>
+        </span>
+        <span class="omen-face omen-back">
+          <b>Who is lying?</b>
+          <span class="omen-list">
+            <div><strong>Cambodia</strong>A cruel fortune-teller twists the queen's frightening dream to demand her banishment.</div>
+            <div><strong>Laos</strong>A court fortune-teller declares her inhuman and demands her sacrifice for the kingdom's peace.</div>
+            <div><strong>Thailand</strong>A royal Brahman astrologer who secretly despises the prince fabricates the fatal prophecy.</div>
+          </span>
+          <span class="turn">Turn back</span>
+        </span>
+      </span>
+    </button>
+  </div>
+</section>
+
+<section class="sec" data-sky="#2a1c10" data-ink="light" data-name="The dance" id="dance">
+  <div class="wrap">
+    <div class="prose">
+      <h2 class="h-chap">Her dance becomes her escape</h2>
+      <p class="lede">Her last request: her wings, so she can dance the ritual properly before she dies.</p>
+      <p>The dance is so beautiful that everyone stops to watch. Then she rises into the sky and is gone.</p>
+      <p><b>Laos:</b> she flies away crying, hurt that anyone wanted her dead.</p>
+      <p><b>Thailand:</b> on her way home she leaves her ring with the hermit Kassapa.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-sky="#38475e" data-ink="light" data-name="The journey" id="journey">
+  <div class="wrap">
+    <div class="journey-head">
+      <div class="prose">
+        <h2 class="h-chap">The prince follows</h2>
+        <p class="lede">He comes home from war to find her gone, and sets out after her.</p>
+      </div>
+      <div class="prose">
+        <p class="sevens">7 years, 7 months, 7 days</p>
+        <p>In the Thai telling, his journey lasts only seven days in heaven: exactly the time she waits for her purifying bath. The hermit Kassapa gives the prince her ring and warns him of five dangers along the road to Mount Krailas.</p>
+      </div>
+    </div>
+    <dl class="dangers" aria-label="Dangers on the road to Mount Krailas">
+      <div class="danger">
+        <dt>Poisonous forest</dt>
+        <dd>A forest whose air and water are poison to humans.</dd>
+      </div>
+      <div class="danger">
+        <dt>Giant bird</dt>
+        <dd>A giant bird large enough to carry off a man.</dd>
+      </div>
+      <div class="danger">
+        <dt>Fighting elephant</dt>
+        <dd>A fighting elephant blocking the narrow path.</dd>
+      </div>
+      <div class="danger">
+        <dt>Twin mountain</dt>
+        <dd>Twin mountains that clash together, crushing whatever passes between them.</dd>
+      </div>
+      <div class="danger">
+        <dt>Great giant</dt>
+        <dd>A great giant guarding the last stretch before Mount Krailas.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" data-sky="#cadaf2" data-ink="dark" data-name="The reunion" id="reunion">
+  <div class="wrap">
+    <div class="prose">
+      <h2 class="h-chap">A ring in the water</h2>
+      <p class="lede">He drops her ring into a maid's water jar, or into the seventh golden pot of sacred water. It falls onto her, and she knows he has come.</p>
+      <p>In Thailand there is one last test: seven sisters dressed exactly alike. Can you find Manorah?</p>
+    </div>
+    <div class="sisters" id="sisters" role="group" aria-label="Seven identical sisters"></div>
+    <div class="game-bar">
+      <p id="game-msg" aria-live="polite">Pick one sister.</p>
+      <div><button class="btn" id="pray" disabled>Pray to the gods</button><button class="btn" id="replay">Shuffle</button></div>
+    </div>
+    <div class="endings" id="endings" hidden>
+      <div><span class="who">Cambodia</span><p><b>They stay in heaven</b>Her parents let the couple live in the heavens.</p></div>
+      <div><span class="who">Laos</span><p><b>The road stays open</b>Sithon sets out to prove his love. The tale ends before we learn how.</p></div>
+      <div><span class="who">Thailand</span><p><b>They return to Earth</b>They go home to Panjalanakorn and rule after the king and queen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-sky="#fffbdd" data-ink="dark" data-name="Three tellings" id="lens-sec">
+  <div class="wrap">
+    <div class="tellings-header">
+      <h2 class="h-chap">Choose a telling</h2>
+      <p class="lede">Each telling gives different weight to family, royal power, the maiden's own choices, ritual and the supernatural.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Choose a telling">
+      <button role="tab" aria-selected="true" aria-controls="lens-panel" data-k="kh" id="tab-kh">Cambodia</button>
+      <button role="tab" aria-selected="false" aria-controls="lens-panel" data-k="la" id="tab-la" tabindex="-1">Laos</button>
+      <button role="tab" aria-selected="false" aria-controls="lens-panel" data-k="th" id="tab-th" tabindex="-1">Thailand</button>
+    </div>
+    <div class="lens" id="lens-panel" role="tabpanel" aria-labelledby="tab-kh"></div>
+  </div>
+</section>
+
+<section class="sec" data-sky="#fff8bd" data-ink="dark" data-name="Shared threads" id="threads">
+  <div class="wrap">
+    <div class="threads-map">
+      <div class="threads-title">
+        <h2>Shared threads</h2>
+        <p>Six things appear in all three tellings. Each one is still alive today.</p>
+      </div>
+      <figure class="thread" style="grid-area:pot"><img src="img/zine/obj-pot.webp" alt="A lidded Benjarong pot" width="229" height="320" loading="lazy"><figcaption><h3>The Sacred Seven</h3><p>Seven sisters, years, months, days and golden pots</p><p class="today">Water blessings still mark new beginnings, as at Lao New Year</p></figcaption></figure>
+      <figure class="thread" style="grid-area:birds"><img src="img/zine/obj-birds.webp" alt="A flight of painted birds" width="320" height="251" loading="lazy"><figcaption><h3>Magical Accessories</h3><p>Scarves and wings, often tied to the maiden's flight home</p><p class="today">Costume makers still hand-sew the wings worn on stage</p></figcaption></figure>
+      <figure class="thread" style="grid-area:crowns"><img src="img/zine/obj-crowns.webp" alt="Two Thai royal crowns" width="320" height="279" loading="lazy"><figcaption><h3>Royal Courts</h3><p>Court politics drive the plots and decide the maidens' fates</p><p class="today">The Royal Ballet of Cambodia began as a court art and still stages the tale</p></figcaption></figure>
+      <figure class="thread" style="grid-area:kin"><img src="img/zine/obj-kinnari.webp" alt="A gilded kinnari statue" width="145" height="320" loading="lazy"><figcaption><h3>Kinaree</h3><p>Half-bird celestial beings who bridge heaven and earth</p><p class="today">Golden kinnari statues guard Wat Phra Kaew in Bangkok</p></figcaption></figure>
+      <figure class="thread" style="grid-area:drums"><img src="img/zine/obj-drums.webp" alt="Two drums and their sticks" width="320" height="236" loading="lazy"><figcaption><h3>Dance as Power</h3><p>The maidens' sacrificial dances become their escapes</p><p class="today">Nora, named after Manorah, joined UNESCO's list in 2021</p></figcaption></figure>
+      <figure class="thread" style="grid-area:lotus"><img src="img/zine/obj-lotus.webp" alt="A blue lotus" width="320" height="222" loading="lazy"><figcaption><h3>Nature as the Stage</h3><p>Forests, ponds, rivers and mountains set the maidens' journey in motion</p><p class="today">Bon Om Touk celebrates the Tonle Sap River reversing its flow</p></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-sky="#cadaf2" data-ink="dark" data-name="Wansolwara" id="wansolwara">
+  <div class="wrap">
+    <h2 class="h-chap">One salt water, one people</h2>
+    <p class="lede">"Wansolwara" is a Pidgin term meaning "one salt water", or more broadly "one ocean, one people". In these stories, nature is part of who we are.</p>
+    <div class="water" id="water" role="img" aria-label="Rippling water."><img src="img/zine/water.jpg" alt="" width="1800" height="441" loading="lazy"></div>
+    <blockquote class="pull">These stories remind us that nature is not separate from our identity but something we inherit, celebrate and have a duty to preserve</blockquote>
+    <div class="fests">
+      <article class="fest"><span class="img-dots"><img src="img/zine/bonomtouk.jpg" alt="Rowers racing a long boat at Bon Om Touk" width="535" height="408" loading="lazy"></span><div><h3>Bon Om Touk</h3><p class="where">Cambodia</p><p>The Water Festival marks the Tonle Sap River flowing back to the Mekong, leaving rich sediment for crops. Towns race long pirogue boats, a tradition traced to Jayavarman VII in the 12th century.</p></div></article>
+      <article class="fest"><span class="img-dots"><img src="img/zine/bounpimai.jpg" alt="People splashing water in celebration at Boun Pi Mai" width="536" height="408" loading="lazy"></span><div><h3>Boun Pi Mai</h3><p class="where">Laos</p><p>Lao New Year is celebrated with water, blessings and music. People splash water to wash away bad luck, pour water over Buddha images and build sand stupas.</p></div></article>
+      <article class="fest"><span class="img-dots"><img src="img/zine/anoma.jpg" alt="An aerial view of a winding river through green land" width="536" height="408" loading="lazy"></span><div><h3>The Anoma River</h3><p class="where">The Lao telling</p><p>Sithon Manora's sisters bathe in the Anoma. In Buddhism it is where Prince Siddhartha renounced the world. Alexander Cunningham identified it with the Aumi River in Uttar Pradesh.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-sky="#0b0a12" data-ink="light" data-name="Why it matters" id="sdg">
+  <div class="wrap">
+    <h2 class="h-chap">Why it matters</h2>
+    <div class="sdg-head">
+      <div class="sdg-badge" role="img" aria-label="Sustainable Development Goal 11: Sustainable cities and communities"><b>11</b>Sustainable cities and communities</div>
+      <p class="target">Target 11.4: "Strengthen efforts to protect and safeguard the world's cultural and natural heritage"</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>90%</b><span>of Cambodia's artists died under the Khmer Rouge, 1975–79</span></div>
+      <div class="stat"><b>500+</b><span>years of Nora, the Thai dance-drama named after Manorah</span></div>
+      <div class="stat"><b>2021</b><span>the year Nora joined UNESCO's intangible heritage list</span></div>
+      <div class="stat"><b>0</b><span>UNESCO listings so far for a Lao performance of Sithon Manora</span></div>
+    </div>
+    <div class="two">
+      <div>
+        <div class="switch" role="group" aria-label="Show threats or what works">
+          <button aria-pressed="true" data-s="threats">The threats</button>
+          <button aria-pressed="false" data-s="works">What works</button>
+        </div>
+        <ul class="tw" id="tw" aria-live="polite"></ul>
+        <p class="sdg-note">This site is our part of Target 11.4: a free, phone-friendly way to meet these tellings as one shared heritage. It also serves SDG 4.7, education for cultural diversity, and SDG 5, gender equality, because Manorah's escape is her own doing.</p>
+      </div>
+      <figure class="fig" tabindex="0">
+        <span class="frame"><img src="img/schooldance-duo.jpg" alt="Princess Buppha Devi Dance School performing for students in Phnom Penh" loading="lazy" width="1200" height="900"><img class="color" src="img/schooldance.jpg" alt="" loading="lazy"></span>
+        <figcaption>Princess Buppha Devi Dance School performing for students, Phnom Penh, 2021 · CIS Phnom Penh, CC BY-SA 4.0</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-sky="#e0eebd" data-ink="dark" data-name="Which telling?" id="quiz-sec">
+  <div class="wrap">
+    <h2 class="h-chap">Which telling is it?</h2>
+    <p class="lede">Five questions. Pick Cambodia, Laos or Thailand.</p>
+    <div class="quiz" id="quiz"></div>
+  </div>
+</section>
+
+<section class="sec" data-sky="#fffbdd" data-ink="dark" data-name="Read the zine" id="zine">
+  <div class="wrap">
+    <h2 class="h-chap">Read the zine</h2>
+    <p class="lede">This site grew out of our zine, <em>Wings of Water: The Celestial Maiden Narratives and our Endangered Heritage</em>. Page through the updated spreads here, full retellings included.</p>
+    <figure class="reader" id="reader">
+      <div class="reader-frame" id="reader-frame" tabindex="0" aria-label="Zine page. Use the arrow keys or swipe to turn.">
+        <img id="reader-img" src="img/zine/spread-01.jpg" alt="" width="2400" height="1697">
+      </div>
+      <figcaption id="reader-cap">When Heaven Touched Water — Prologue Poem</figcaption>
+    </figure>
+    <div class="reader-bar">
+      <button class="btn" id="reader-prev">Previous</button>
+      <span class="reader-count" id="reader-count" aria-live="polite">Spread 1 of 9</span>
+      <button class="btn" id="reader-next">Next</button>
+      <a class="link" id="reader-full" href="img/zine/spread-01.jpg" target="_blank" rel="noopener">Open full size</a>
+      <a class="link" href="https://canva.link/e3ayv0xyg0cvai5" target="_blank" rel="noopener">View zine on Canva ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-sky="#0b0a12" data-ink="light" data-name="Keep her story alive" id="coda">
+  <div class="wrap">
+    <h2 class="h-chap">Keep her story alive</h2>
+    <p class="lede">Living heritage survives when people know it exists. Three things you can do in five minutes:</p>
+    <ul class="acts">
+      <li><a href="https://ich.unesco.org/en/RL/nora-dance-drama-in-southern-thailand-01587" target="_blank" rel="noopener">Watch Nora ↗</a><span>UNESCO's page on the Thai dance-drama named after Manorah, with video</span></li>
+      <li><a href="https://ich.unesco.org/en/RL/royal-ballet-of-cambodia-00060" target="_blank" rel="noopener">Watch the Royal Ballet ↗</a><span>UNESCO's page on the Cambodian court dance that restaged Preah Sothun Neang Monorea</span></li>
+      <li><button id="share">Share this site</button><span>Copy the link and send it to one friend</span></li>
+    </ul>
+    <div class="credits">
+      <div><h3>Made by</h3>SEA 30 Group 2, University of the Philippines Diliman, 2026. Retold from our zine, <em>Wings of Water: The Celestial Maiden Narratives and our Endangered Heritage</em>.</div>
+      <div><h3>Images</h3>Cover art, objects, water and festival photos, and the zine spreads come from our zine. From Wikimedia Commons: Devatas, Angkor Wat, Kent Davis, CC BY-SA 4.0; Golden kinnari, Wat Phra Kaew, Balou46, CC BY-SA 3.0; Royal Ballet of Cambodia, dalbera, CC BY 2.0; Apsaras at Bun Vat Phou 2012, GuillaumeG, CC BY-SA 3.0; Buppha Devi Dance School, CIS Phnom Penh, CC BY-SA 4.0.</div>
+      <div><h3>Sources</h3>UNESCO intangible heritage lists: Nora (2021), Royal Ballet of Cambodia (2003, 2008), Khaen music of the Lao people (2017). UN SDG Target 11.4. Class readings on the celestial maiden narratives.</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<dialog class="index" id="index" aria-label="Chapters">
+  <div class="index-in">
+    <ol id="index-list"></ol>
+    <button class="index-close" id="index-close">Close</button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+/* ---------- Scroll engine: sky colour and ink ---------- */
+const secs = $$('main > .sec');
+const hex = h => { const n = parseInt(h.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255]; };
+const lum = ([r, g, b]) => (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+let centers = [];
+const measure = () => { centers = secs.map(s => s.offsetTop + s.offsetHeight / 2); };
+let curInk = '', skyNow = hex(secs[0].dataset.sky), ticking = false;
+
+function frame() {
+  ticking = false;
+  const mid = scrollY + innerHeight / 2;
+  let i = 0;
+  while (i < centers.length - 1 && centers[i + 1] <= mid) i++;
+  const a = secs[i], b = secs[Math.min(i + 1, secs.length - 1)];
+  let t = 0;
+  if (b !== a) t = Math.min(1, Math.max(0, (mid - centers[i]) / (centers[i + 1] - centers[i])));
+  t = t * t * (3 - 2 * t);
+  const ca = hex(a.dataset.sky), cb = hex(b.dataset.sky);
+  skyNow = ca.map((v, k) => Math.round(v + (cb[k] - v) * t));
+  document.body.style.setProperty('--sky', `rgb(${skyNow.join(',')})`);
+  const own = secs.find(s => s.offsetTop <= mid && s.offsetTop + s.offsetHeight > mid) || a;
+  if (own.dataset.ink !== curInk) { curInk = own.dataset.ink; document.body.dataset.ink = curInk; }
+  document.body.classList.toggle('at-hero', own === secs[0]);
+  drawStars();
+}
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, {passive: true});
+addEventListener('resize', () => { measure(); sizeStars(); frame(); });
+
+/* ---------- Stars: still, visible only while the sky is dark ---------- */
+const cv = $('#stars'), ctx = cv.getContext('2d');
+let stars = [], W = 0, H = 0, starAlpha = -1;
+function sizeStars() {
+  const dpr = Math.min(2, devicePixelRatio || 1); W = innerWidth; H = innerHeight;
+  cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const n = Math.round(W * H / 5200);
+  stars = Array.from({length: n}, () => ({x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.3 + .2, b: .35 + Math.random() * .5}));
+  starAlpha = -1;
+}
+function drawStars() {
+  const alpha = Math.round(Math.max(0, Math.min(1, (0.2 - lum(skyNow)) / 0.14)) * 50) / 50;
+  if (alpha === starAlpha) return;
+  starAlpha = alpha;
+  ctx.clearRect(0, 0, W, H);
+  if (alpha <= 0) return;
+  ctx.fillStyle = '#fff8bd';
+  for (const s of stars) { ctx.globalAlpha = alpha * s.b; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283); ctx.fill(); }
+}
+
+/* ---------- Omen card ---------- */
+$('#omen').addEventListener('click', e => { const b = e.currentTarget; b.classList.toggle('flipped'); b.setAttribute('aria-pressed', String(b.classList.contains('flipped'))); });
+
+/* ---------- Seven sisters (using cut-out Kinnari art with halftone screen) ---------- */
+const sisWrap = $('#sisters'), msg = $('#game-msg'), pray = $('#pray');
+let answer = 0, misses = 0, solved = false;
+function deal() {
+  answer = Math.floor(Math.random() * 7); misses = 0; solved = false;
+  sisWrap.innerHTML = '';
+  for (let i = 0; i < 7; i++) {
+    const b = document.createElement('button');
+    b.className = 'sister';
+    b.innerHTML = `<img src="img/zine/obj-kinnari.webp" alt="" width="145" height="320" loading="lazy"><span class="sister-num">Sister ${i + 1}</span>`;
+    b.setAttribute('aria-label', 'Sister ' + (i + 1));
+    b.addEventListener('click', () => guess(i, b));
+    sisWrap.appendChild(b);
+  }
+  pray.disabled = true; msg.textContent = 'Pick one sister.'; $('#endings').hidden = true;
+}
+function guess(i, b) {
+  if (solved || b.classList.contains('wrong')) return;
+  if (i === answer) {
+    solved = true; b.classList.add('right'); b.classList.remove('hint');
+    $$('.sister', sisWrap).forEach(x => { if (x !== b) x.classList.add('dim'); });
+    msg.textContent = misses ? 'Found her. The prince needed the gods\' help too.' : 'Found her on the first try.';
+    $('#endings').hidden = false; pray.disabled = true;
+  } else {
+    misses++; b.classList.add('wrong'); b.setAttribute('aria-label', b.getAttribute('aria-label') + ', not her');
+    msg.textContent = misses >= 2 ? 'Not her. The prince could not tell either, so he prayed.' : 'Not her. They look exactly alike.';
+    if (misses >= 2) pray.disabled = false;
+  }
+}
+pray.addEventListener('click', () => { const b = sisWrap.children[answer]; b.classList.add('hint'); msg.textContent = 'The gods answer. One sister shines.'; pray.disabled = true; b.focus(); });
+$('#replay').addEventListener('click', deal);
+deal();
+
+/* ---------- Zine reader ---------- */
+const SPREADS = [
+  {img:'01', title:'When Heaven Touched Water — Prologue Poem (Ada Limón)', alt:'Opening spread: rippling blue water beside the poem In Praise of Mystery: A Poem for Europa by Ada Limón and the heading When Heaven Touched Water'},
+  {img:'02', title:'Cover — Wings of Water: The Celestial Maiden Narratives and our Endangered Heritage', alt:'Zine cover: a celestial maiden from a temple mural in olive, and the title Wings of Water: The Celestial Maiden Narratives and our Endangered Heritage on mustard, listing the Cambodian, Thai and Lao tellings'},
+  {img:'03', title:'Cambodia: Preah Sothun and Neang Monorea', alt:'The full Cambodian retelling beside a statue of a celestial maiden'},
+  {img:'04', title:'Laos: Sithon Manora', alt:'The full Lao retelling around a carved naga head'},
+  {img:'05', title:'Thailand: The Tale of Phra Suthon and Manorah', alt:'The Thai retelling, part one, with a kinnari statue'},
+  {img:'06', title:'Thailand, continued', alt:'The Thai retelling, part two: the sacrifice dance, the journey and the test of the seven sisters, with a dancing figure'},
+  {img:'07', title:'Shared Threads', alt:'Six motifs, each shown with a photographed object, arranged around the title Shared Threads'},
+  {img:'08', title:'Wansolwara: Nature and Our Shared Identity', alt:'A spread about Wansolwara above a photo of rippling water'},
+  {img:'09', title:'Bon Om Touk, Boun Pi Mai and the Anoma River', alt:'Three short articles, each with a blue duotone photo: a boat race, a water festival and a river'}
+];
+const narrow = matchMedia('(max-width: 760px)');
+const reader = $('#reader'), rImg = $('#reader-img'), rCap = $('#reader-cap'), rCount = $('#reader-count'), rPrev = $('#reader-prev'), rNext = $('#reader-next'), rFull = $('#reader-full');
+let page = 0;
+const lastPage = SPREADS.length * 2 - 1;
+function showPage() {
+  const s = Math.floor(page / 2), d = SPREADS[s], src = `img/zine/spread-${d.img}.jpg`;
+  if (rImg.getAttribute('src') !== src) rImg.setAttribute('src', src);
+  rImg.alt = d.alt; rFull.href = src; rCap.textContent = d.title;
+  reader.classList.toggle('right', narrow.matches && page % 2 === 1);
+  rCount.textContent = narrow.matches ? `Page ${page + 1} of ${lastPage + 1}` : `Spread ${s + 1} of ${SPREADS.length}`;
+  rPrev.disabled = page === 0;
+  rNext.disabled = narrow.matches ? page >= lastPage : s >= SPREADS.length - 1;
+  const n = SPREADS[s + 1]; if (n) { const im = new Image(); im.src = `img/zine/spread-${n.img}.jpg`; }
+}
+function turn(dir) {
+  page = narrow.matches ? page + dir : (Math.floor(page / 2) + dir) * 2;
+  page = Math.max(0, Math.min(lastPage, page));
+  showPage();
+}
+rPrev.addEventListener('click', () => turn(-1));
+rNext.addEventListener('click', () => turn(1));
+const rFrame = $('#reader-frame');
+rFrame.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') turn(-1); if (e.key === 'ArrowRight') turn(1); });
+let swipeX = null;
+rFrame.addEventListener('pointerdown', e => { swipeX = e.clientX; });
+rFrame.addEventListener('pointerup', e => { if (swipeX !== null && Math.abs(e.clientX - swipeX) > 40) turn(e.clientX < swipeX ? 1 : -1); swipeX = null; });
+narrow.addEventListener('change', showPage);
+function openZine(spread) { page = spread * 2; showPage(); $('#zine').scrollIntoView(); }
+
+/* ---------- Three tellings (Symmetrical, balanced editorial showcase) ---------- */
+const TELLINGS = {
+  kh: {country:'Cambodia', title:'Preah Sothun Neang Monorea', spread:2, img:'ballet', alt:'Royal Ballet of Cambodia dancers at curtain call', cap:'Royal Ballet of Cambodia, Paris 2010 · dalbera, CC BY 2.0', w:1200, h:853,
+    beats:[['Opens with','The sisters\' side: seven sisters promise to return when the gongs ring.'],['How she is caught','Her magic scarf disappears while she bathes in a lotus pond.'],['Who decides her fate','A cruel fortune-teller twists the queen\'s dream; the king and queen choose exile, not death.'],['Her escape','Sent into exile, she flies back toward the heavens.'],['The token','Her ring, left with a hermit, spills from a maid\'s water jar into her hair.'],['The ending','Her parents let the couple stay married in the heavens.']],
+    page:'Exile rather than execution, and her return to her celestial family.', stage:'The Royal Ballet of Cambodia restaged it as a full dance-drama in 2003, the year UNESCO proclaimed the ballet a masterpiece of intangible heritage.'},
+  la: {country:'Laos', title:'Sithon Manora', spread:3, img:'vatphou', alt:'Apsara dancers in white at the Bun Vat Phou festival in Champasak, Laos', cap:'Apsaras, Bun Vat Phou festival 2012, Champasak · GuillaumeG, CC BY-SA 3.0', w:1200, h:800,
+    beats:[['Opens with','Two serpents (naga) guarding a pool from a giant who eats their young.'],['How she is caught','A hunter kills the giant, receives a powerful cord from the naga, and binds Manora.'],['Who decides her fate','A fortune teller says she is not human and must die for the palace\'s peace.'],['Her escape','She asks for her wings to complete the ritual dance, then flies off crying.'],['The token','None. The Lao telling mentions no ring.'],['The ending','Open: Sithon sets out to prove his love.']],
+    page:'Supernatural river guardians, and the maiden traded as treasure.', stage:'It lives on in storytelling and literature, with no UNESCO-listed performance yet. Lao khaen music joined UNESCO\'s list in 2017.'},
+  th: {country:'Thailand', title:'The Tale of Phra Suthon and Manorah', spread:4, img:'kinnari', alt:'Golden kinnari statue at Wat Phra Kaew, Bangkok', cap:'Golden kinnari, Wat Phra Kaew, Bangkok · Balou46, CC BY-SA 3.0', w:795, h:1200,
+    beats:[['Opens with','Four bunches of gold appear when Prince Suthon is born in Panjalanakorn.'],['How she is caught','The hunter Boontrik hides the youngest kinnari\'s wings at the great lake.'],['Who decides her fate','A Brahman astrologer calls her a bad omen; the king and queen disagree, but give in.'],['Her escape','Given her wings for a last dance, she flies to Mount Krailas, leaving her ring with the hermit Kassapa.'],['The token','The ring, dropped in the seventh golden pot, falls onto her finger.'],['The ending','He picks her from seven identical sisters; they return to Earth and reign.']],
+    page:'A long ritualized test of the prince\'s devotion and skill.', stage:'Nora, the dance-drama of southern Thailand, takes its name from Manorah. It is over 500 years old and joined UNESCO\'s list in 2021.'}
+};
+const panel = $('#lens-panel');
+function renderLens(k) {
+  const d = TELLINGS[k];
+  panel.innerHTML = `
+    <figure class="fig lens-fig" tabindex="0">
+      <span class="frame"><img src="img/${d.img}-duo.jpg" alt="${d.alt}" width="${d.w}" height="${d.h}"><img class="color" src="img/${d.img}.jpg" alt=""></span>
+      <figcaption>${d.cap}</figcaption>
+    </figure>
+    <div class="lens-body">
+      <div class="lens-top">
+        <div>
+          <h3 class="lens-title">${d.country}</h3>
+          <p class="lens-sub">${d.title}</p>
+        </div>
+        <button class="btn" data-spread="${d.spread}">Read it in the zine</button>
+      </div>
+      <dl class="beats">${d.beats.map(([t, v]) => `<div class="beat"><dt>${t}</dt><dd>${v}</dd></div>`).join('')}</dl>
+      <div class="notes">
+        <div><p><b>Its emphasis</b></p><p>${d.page}</p></div>
+        <div><p><b>On stage today</b></p><p>${d.stage}</p></div>
+      </div>
+    </div>`;
+  $('[data-spread]', panel).addEventListener('click', e => openZine(+e.currentTarget.dataset.spread));
+}
+const tabs = $$('.tabs button');
+function selectTab(b) {
+  tabs.forEach(x => { const on = x === b; x.setAttribute('aria-selected', String(on)); x.tabIndex = on ? 0 : -1; });
+  panel.setAttribute('aria-labelledby', b.id);
+  renderLens(b.dataset.k);
+}
+tabs.forEach(b => b.addEventListener('click', () => selectTab(b)));
+$('.tabs').addEventListener('keydown', e => {
+  if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+  const i = tabs.indexOf(document.activeElement);
+  const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : 2)) % 3]; n.focus(); selectTab(n);
+});
+renderLens('kh');
+
+/* ---------- Wansolwara ripples ---------- */
+const water = $('#water');
+water.addEventListener('pointerdown', e => {
+  const r = water.getBoundingClientRect(), s = document.createElement('span');
+  s.className = 'ripple'; s.style.left = (e.clientX - r.left) + 'px'; s.style.top = (e.clientY - r.top) + 'px';
+  water.appendChild(s); setTimeout(() => s.remove(), 1700);
+});
+
+/* ---------- Threats and what works ---------- */
+const TW = {
+  threats:['About 90% of Cambodia\'s artists died under the Khmer Rouge, 1975–79.','Young people move to cities, and global media pulls audiences away.','Troupes lack funding and places to perform.','Heritage spending data (indicator 11.4.1) rarely counts living arts.'],
+  works:['Surviving masters rebuilt Cambodia\'s Royal Ballet after 1979.','Nora has been taught in Thai schools and universities since the 1970s.','Walailak University offers online Nora courses.','Khaen associations train young Lao musicians.']
+};
+const twEl = $('#tw');
+const renderTW = k => { twEl.innerHTML = TW[k].map(x => `<li>${x}</li>`).join(''); };
+$$('.switch button').forEach(b => b.addEventListener('click', () => { $$('.switch button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); renderTW(b.dataset.s); }));
+renderTW('threats');
+
+/* ---------- Quiz ---------- */
+const QS = [
+  ['Which telling adds serpents (naga) to the story?', 'la', 'Two naga guard the pool and give the hunter his cord.'],
+  ['In which telling is the maiden exiled instead of killed?', 'kh', 'The Cambodian king and queen choose exile over death.'],
+  ['Where does a Brahman astrologer read the omen?', 'th', 'In Thailand, an astrologer who resents the prince speaks against her.'],
+  ['Which telling uses a magic cord and mentions no ring?', 'la', 'Sithon Manora is the only telling without a ring.'],
+  ['In which telling does the couple return to Earth?', 'th', 'Phra Suthon brings Manorah home to Panjalanakorn.']
+];
+const NAMES = {kh:'Cambodia', la:'Laos', th:'Thailand'};
+const quiz = $('#quiz');
+let qi = 0, score = 0, best = 0;
+try { best = +localStorage.getItem('omtt-best') || 0; } catch (e) {}
+function renderQ() {
+  if (qi >= QS.length) {
+    if (score > best) { best = score; try { localStorage.setItem('omtt-best', String(best)); } catch (e) {} }
+    const line = score === 5 ? 'Perfect. You could teach this.' : score >= 3 ? 'Well read. Revisit the tellings for the ones you missed.' : 'Try the three tellings above, then come back.';
+    quiz.innerHTML = `<div class="q-card"><div class="q-meta"><span>Result</span><span>Best: ${best} of 5</span></div><p class="q-text">You got ${score} of 5</p><p class="q-why">${line}</p><div class="q-actions"><button class="btn" id="q-again">Try again</button><a class="link" href="#lens-sec">Open the tellings</a></div></div>`;
+    $('#q-again').addEventListener('click', () => { qi = 0; score = 0; renderQ(); });
+    return;
+  }
+  const [q, a, why] = QS[qi];
+  quiz.innerHTML = `<div class="q-card"><div class="q-meta"><span>Question ${qi + 1} of 5</span><span>Score ${score}</span></div><div class="q-bar"><i style="width:${qi / 5 * 100}%"></i></div><p class="q-text">${q}</p><div class="q-opts">${Object.keys(NAMES).map(k => `<button data-k="${k}">${NAMES[k]}</button>`).join('')}</div><p class="q-why" aria-live="polite"></p><div class="q-actions"><button class="btn" id="q-next" hidden>Next question</button></div></div>`;
+  $$('.q-opts button', quiz).forEach(b => b.addEventListener('click', () => {
+    const ok = b.dataset.k === a; if (ok) score++;
+    $$('.q-opts button', quiz).forEach(x => { x.disabled = true; if (x.dataset.k === a) x.classList.add('ok'); });
+    if (!ok) b.classList.add('no');
+    $('.q-why', quiz).textContent = (ok ? 'Correct. ' : `It's ${NAMES[a]}. `) + why;
+    const n = $('#q-next', quiz); n.hidden = false; n.textContent = qi === 4 ? 'See my result' : 'Next question'; n.focus();
+    n.addEventListener('click', () => { qi++; renderQ(); });
+  }));
+}
+renderQ();
+
+/* ---------- Share, chapter list, toast ---------- */
+const toast = $('#toast');
+const say = t => { toast.textContent = t; toast.classList.add('on'); clearTimeout(say.t); say.t = setTimeout(() => toast.classList.remove('on'), 2600); };
+$('#share').addEventListener('click', () => {
+  const url = location.href.split('#')[0];
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(() => say('Link copied. Send it to one friend.'), () => say('Copy this link: ' + url));
+  else say('Copy this link: ' + url);
+});
+const openDialog = d => { if (typeof d.showModal === 'function') d.showModal(); else d.setAttribute('open', ''); };
+const closeDialog = d => { if (typeof d.close === 'function') d.close(); else d.removeAttribute('open'); };
+const idx = $('#index'), list = $('#index-list');
+secs.forEach(s => {
+  const li = document.createElement('li');
+  li.innerHTML = `<a href="#${s.id}">${s.dataset.name}</a>`;
+  li.querySelector('a').addEventListener('click', () => closeDialog(idx));
+  list.appendChild(li);
+});
+$('#open-index').addEventListener('click', () => openDialog(idx));
+$('#index-close').addEventListener('click', () => closeDialog(idx));
+idx.addEventListener('click', e => { if (e.target === idx) closeDialog(idx); });
+
+/* ---------- Boot ---------- */
+measure(); sizeStars(); frame(); showPage();
+addEventListener('load', () => { measure(); frame(); });
+})();
+</script>
+
+</body>
+</html>
