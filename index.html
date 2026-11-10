@@ -6,7 +6,7 @@
 <title>Wings of Water: The Celestial Maiden Narratives and our Endangered Heritage</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Wings of Water: The Celestial Maiden Narratives and our Endangered Heritage — an interactive retelling of the stories of Cambodia, Laos and Thailand under SDG 11.4.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600;700&display=swap">
 <style>
 :root{
   --sky:#e5c876;
@@ -306,7 +306,7 @@ main{position:relative;z-index:1}
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:8px 40px;
+  gap:8px 16px;
   margin:0 auto 48px;
   padding-bottom:12px;
   border-bottom:1px solid var(--rule);
@@ -322,9 +322,10 @@ main{position:relative;z-index:1}
   font-weight:500;
 }
 .tabs button:hover,.switch button:hover{color:var(--ink)}
+.tabs button,.switch button{padding:4px 12px;border-bottom:0;user-select:none;-webkit-user-select:none;transition:background-color 160ms ease,color 160ms ease}
 .tabs button[aria-selected="true"],.switch button[aria-pressed="true"]{
-  color:var(--ink);
-  border-bottom-color:var(--ink);
+  color:#2a1c10;
+  background:#e6c976;
 }
 .lens{
   display:grid;
@@ -385,10 +386,10 @@ main{position:relative;z-index:1}
 .target{font:500 clamp(1.5rem,2.8vw,2.25rem)/1.2 var(--display);max-width:34ch}
 @media (max-width:520px){.sdg-head{grid-template-columns:1fr}}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 24px;margin:64px 0}
-.stat b{display:block;font:500 clamp(2.75rem,6vw,4.5rem)/.9 var(--display);color:var(--accent);margin-bottom:8px}
+.stat b{display:block;font:700 clamp(2.5rem,5vw,4rem)/1 var(--body);color:var(--accent);margin-bottom:12px;font-variant-numeric:lining-nums tabular-nums}
 .stat span{font-size:.9375rem;line-height:1.45;color:var(--ink-2)}
 @media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.switch{display:flex;gap:28px;margin-bottom:24px}
+.switch{display:flex;gap:8px;margin-bottom:24px}
 .tw{display:grid;gap:16px;max-width:56ch}
 .sdg-note{margin-top:32px;max-width:56ch;color:var(--ink-2)}
 
@@ -444,6 +445,40 @@ dialog.index::backdrop{background:rgba(8,7,12,.6)}
 .index-close{justify-self:start;border:0;background:#fff8bd;color:#0b0a12;padding:10px 16px;font-size:.9375rem}
 .toast{position:fixed;z-index:40;left:50%;bottom:calc(80px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:none;max-width:90vw;background:#fff8bd;color:#1f2c52;padding:12px 16px;font-size:.9375rem;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .toast.on{display:block}
+
+/* Rituals that protect the land */
+.practices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 64px;margin-top:56px}
+.practices .where{font-size:.875rem;color:var(--ink-2);margin-bottom:4px}
+.practices h3{font-size:2rem;margin-bottom:12px}
+.practices p+p{margin-top:12px}
+.roles{display:grid;gap:8px;margin-top:16px}
+.roles li{position:relative;padding-left:20px}
+.roles li::before{content:"";position:absolute;left:0;top:.8em;width:8px;height:1px;background:currentColor}
+.practices-close{margin:112px auto 16px;text-align:center;font:500 clamp(2rem,4.6vw,4rem)/1.2 var(--display);color:var(--ink)}
+.practices-close mark{background:#e6c976;color:#2a1c10;padding:0 12px;white-space:nowrap}
+@media (max-width:640px){.practices-close mark{white-space:normal;-webkit-box-decoration-break:clone;box-decoration-break:clone}}
+@media (max-width:760px){.practices{grid-template-columns:1fr}}
+
+/* Pax Silica */
+.pax-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:end}
+.pax-head .h-chap{font-size:clamp(2.75rem,6.2vw,5.5rem);margin:0}
+@media (max-width:860px){.pax-head{grid-template-columns:1fr;gap:24px}}
+#pax .lede mark{background:#e6c976;color:#1d2229;padding:0 6px}
+.pax-figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin:96px 0 64px;padding-top:56px;border-top:1px solid var(--rule);text-align:center}
+.pax-figs b{display:block;white-space:nowrap;font:700 clamp(2.25rem,4.2vw,3.75rem)/1 var(--body);color:var(--accent);margin-bottom:20px;font-variant-numeric:lining-nums tabular-nums}
+.pax-figs .unit{display:block;font:500 1.5rem/1.2 var(--display);color:var(--ink);margin-bottom:8px}
+.pax-figs .note{display:block;max-width:26ch;margin:0 auto;font-size:1rem;line-height:1.5;color:var(--ink-2)}
+@media (max-width:760px){.pax-figs{grid-template-columns:1fr;gap:56px;margin-top:64px}}
+.share{margin:0 0 64px}
+.share figcaption{font-size:.875rem;color:var(--ink-2);margin-bottom:12px}
+.share-bar{height:24px;background:#3a4250}
+.share-bar i{display:block;height:100%;background:var(--accent)}
+.share-legend{display:flex;justify-content:space-between;gap:16px;margin-top:8px;font-size:.875rem;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.share-legend b{color:var(--ink);font-weight:500}
+.sub-h{font-size:1.75rem;margin-bottom:12px}
+.pax-two{align-items:start}
+.prose .src{margin-top:32px;font-size:.8125rem;line-height:1.5;color:var(--ink-2)}
+
 </style>
 
 <canvas id="stars" aria-hidden="true"></canvas>
@@ -693,6 +728,65 @@ dialog.index::backdrop{background:rgba(8,7,12,.6)}
   </div>
 </section>
 
+<section class="sec" data-sky="#4d4d26" data-ink="light" data-name="Rituals that protect the land" id="practices">
+  <div class="wrap">
+    <div class="prose">
+      <h2 class="h-chap">Rituals that protect the land</h2>
+      <p class="lede">Beyond the festivals, Southeast Asian beliefs still guard forests and rivers. Two of them come from the same countries as our tellings.</p>
+    </div>
+    <div class="practices">
+      <article>
+        <p class="where">Thailand</p>
+        <h3>Bueat Pa, tree ordination</h3>
+        <p>Monks ordain, or dress, a tree. Given the standing of a monk, it can no longer be harmed or cut down for logging.</p>
+        <p>The ceremony honours the spirits of the forest, blesses rivers and asks forgiveness for harming the natural world. In the 1980s it became a grassroots resistance against commercial logging in northern Thailand, and communities and activists across the country took it up.</p>
+      </article>
+      <article>
+        <p class="where">Laos, and the Lao telling</p>
+        <h3>The naga</h3>
+        <p>Half human and half serpent, nagas belong to the water. Snakes appear with the monsoon, so a naga became a sign of rain and good harvests. In Sithon Manora, two naga guard the pool where the story begins.</p>
+        <ul class="roles">
+          <li>Guardians of the natural world and of life underwater</li>
+          <li>Wise and powerful, living in harmony with nature</li>
+          <li>Symbols of creation and dissolution, fertility, prosperity and protection</li>
+        </ul>
+      </article>
+    </div>
+    <p class="practices-close">Nature has always been part of our culture.<br><mark>How are we protecting it now?</mark></p>
+  </div>
+</section>
+
+<section class="sec" data-sky="#1d2229" data-ink="light" data-name="Pax Silica" id="pax">
+  <div class="wrap">
+    <div class="pax-head">
+      <h2 class="h-chap">Is your data killing our sacred waters?</h2>
+      <p class="lede"><mark>Pax Silica</mark> is a US-led push for semiconductor and technology hubs, with Malaysia, Thailand, Vietnam and the Philippines at its center. It is sold as growth, but it makes heavy demands on land, water, energy and people.</p>
+    </div>
+    <div class="pax-figs">
+      <div><b>130M</b><span class="unit">liters of water a day</span><span class="note">about what 600,000 households use</span></div>
+      <div><b>3 GW</b><span class="unit">of electricity</span><span class="note">which could lock the region into fossil fuels</span></div>
+      <div><b>20,000 ha</b><span class="unit">of land for solar</span><span class="note">for its planned 2 GW of solar, competing with farms</span></div>
+    </div>
+    <figure class="share">
+      <figcaption>Pax Silica's power demand against Luzon's grid today</figcaption>
+      <div class="share-bar" role="img" aria-label="3 gigawatts is 16% of Luzon's current grid capacity"><i style="width:16%"></i></div>
+      <div class="share-legend"><span><b>16%</b> Pax Silica, 3 GW</span><span>Luzon's current grid capacity</span></div>
+    </figure>
+    <div class="two pax-two">
+      <div class="prose">
+        <h3 class="sub-h">What it puts in the water</h3>
+        <p>Chip factories release wastewater with fluorides, ammonia, heavy metals and toxic organic compounds. Without advanced treatment, these can seep into groundwater and soil and cause long-term health risks.</p>
+        <p class="src">Sources: Ignacio and Pacheco (2026); Mendoza, Science PH (2026); Sandhu et al. (2025); Sebola-Samanyanga (2026)</p>
+      </div>
+      <div class="prose">
+        <h3 class="sub-h">What it takes from communities</h3>
+        <p>As in the celestial maiden tales, water carries the story. Turning farmland and Indigenous Peoples' lands into industrial sites threatens livelihoods and rituals.</p>
+        <p>For many communities, identity and land are one: the land is where they keep their histories and their ties to each other. When they are displaced, what is lost cannot be measured by the price of the land.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" data-sky="#e0eebd" data-ink="dark" data-name="Which telling?" id="quiz-sec">
   <div class="wrap">
     <h2 class="h-chap">Which telling is it?</h2>
@@ -731,9 +825,9 @@ dialog.index::backdrop{background:rgba(8,7,12,.6)}
       <li><button id="share">Share this site</button><span>Copy the link and send it to one friend</span></li>
     </ul>
     <div class="credits">
-      <div><h3>Made by</h3>SEA 30 Group 2, University of the Philippines Diliman, 2026. Retold from our zine, <em>Wings of Water: The Celestial Maiden Narratives and our Endangered Heritage</em>.</div>
+      <div><h3>Made by</h3>SEA 30 THX Group 2, University of the Philippines Diliman, 2026: Sophia Louise Calzado, Kyna Arianne Veridiano, Shawn Joseph Castro, Michael Lawrence Salak, Juliana Isabel Subia, Jhezil Bongcarawan, Athena Leila Salumbides, Elouise Amante and Carlos Martin Superal. Retold from our zine, <em>Wings of Water: The Celestial Maiden Narratives and our Endangered Heritage</em>.</div>
       <div><h3>Images</h3>Cover art, objects, water and festival photos, and the zine spreads come from our zine. From Wikimedia Commons: Devatas, Angkor Wat, Kent Davis, CC BY-SA 4.0; Golden kinnari, Wat Phra Kaew, Balou46, CC BY-SA 3.0; Royal Ballet of Cambodia, dalbera, CC BY 2.0; Apsaras at Bun Vat Phou 2012, GuillaumeG, CC BY-SA 3.0; Buppha Devi Dance School, CIS Phnom Penh, CC BY-SA 4.0.</div>
-      <div><h3>Sources</h3>UNESCO intangible heritage lists: Nora (2021), Royal Ballet of Cambodia (2003, 2008), Khaen music of the Lao people (2017). UN SDG Target 11.4. Class readings on the celestial maiden narratives.</div>
+      <div><h3>Sources</h3>UNESCO intangible heritage lists: Nora (2021), Royal Ballet of Cambodia (2003, 2008), Khaen music of the Lao people (2017). UN SDG Targets 11.4 and 11.6. Class readings on the celestial maiden narratives. Story of Renunciation, Jataka 076, IGNCA. Ignacio and Pacheco (2026), Pax Silica in the Philippines, Far Eastern University Manila. Mendoza (2026), Pax Silica brings promise, but at what cost?, Science PH. Sandhu et al. (2025), Semiconductor manufacturing wastewater challenges, ScienceDirect. Sebola-Samanyanga (2026), Displacement, land and identity, Journal of Historical Geography 93. Tree Ordination: Preserving Nature through Spiritual Connection (2025), Thailand Foundation. Yaka (2023), More-than-Human Lifeworlds, Society &amp; Natural Resources 37(5).</div>
     </div>
   </div>
 </section>
